@@ -3,13 +3,13 @@ import requests
 import threading
 import time
 
-url = "http://192.168.10.241:80"
-size = 16
+url = "http://192.168.0.98:80"
+size = 8
 used_dict = set()
 lock = threading.Lock()
 loop = 0
 cooldown_sec = 3
-my_range = 0 # Set 0~5
+my_range = 0 # Set 0~3
 
 stop_event = threading.Event()
 
@@ -22,7 +22,7 @@ def attempt_brute_force():
         while not stop_event.is_set():
             test = brute_force_password(size)
 
-            if int(test[0], 16) % 6 != my_range:
+            if int(test[0], 16) % 4 != my_range:
                 continue
 
             with lock:
