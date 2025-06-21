@@ -9,10 +9,9 @@ used_dict = set()
 lock = threading.Lock()
 loop = 0
 cooldown_sec = 3
+my_range = 0 # Set 0~5
 
 stop_event = threading.Event()
-
-my_range = 0
 
 def brute_force_password(length):
     return os.urandom(length).hex()
